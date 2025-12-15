@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FabianTalkEnglish - Conversación con Subtítulos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎙️ FabianTalkEnglish</h1>
+            <p class="subtitle">Practica inglés con subtítulos en tiempo real</p>
+        </header>
+
+        <main>
+            <!-- Área de subtítulos -->
+            <div class="subtitles-container">
+                <div class="subtitle-box user">
+                    <h3>🗣️ You</h3>
+                    <div id="userSubtitle" class="subtitle-text">
+                        Click "Start Conversation" to begin...
+                    </div>
+                </div>
+                <div class="subtitle-box ai">
+                    <h3>🤖 AI Assistant</h3>
+                    <div id="aiSubtitle" class="subtitle-text">
+                        I'm ready to chat with you in English!
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Traducciones -->
+            <div class="translations-container">
+                <div class="translation-box">
+                    <h4>🇪🇸 Tu mensaje en español:</h4>
+                    <div id="userSpanish" class="translation-text">---</div>
+                </div>
+                <div class="translation-box">
+                    <h4>🇪🇸 Respuesta AI en español:</h4>
+                    <div id="aiSpanish" class="translation-text">¡Estoy lista para conversar contigo en inglés!</div>
+                </div>
+            </div>
+
+            <!-- Historial de conversación -->
+            <div class="conversation-history">
+                <h3>📝 Conversation History</h3>
+                <div id="historyContainer" class="history-content"></div>
+            </div>
+
+            <!-- Controles -->
+            <div class="controls">
+                <button id="startBtn" type="button" class="btn btn-start" onclick="startListening()">
+                    <span class="btn-icon">▶️</span> Start Conversation
+                </button>
+                <button id="stopBtn" class="btn btn-stop" disabled>
+                    <span class="btn-icon">⏹️</span> Stop
+                </button>
+                <button id="clearBtn" class="btn btn-clear">
+                    <span class="btn-icon">🗑️</span> Clear History
+                </button>
+            </div>
+
+            <!-- Estado del micrófono -->
+            <div class="status">
+                <div id="statusIndicator" class="status-indicator">
+                    <span class="status-dot"></span>
+                    <span id="statusText">Ready</span>
+                </div>
+                <div class="language-info">
+                    Speaking: <strong>English</strong> | AI: <span id="aiStatus">Ready</span>
+                </div>
+            </div>
+            
+            <!-- Configuración de voz -->
+            <div class="voice-settings">
+                <label>
+                    <input type="checkbox" id="enableVoice" checked>
+                    🔊 Enable AI Voice Response
+                </label>
+                <label>
+                    Voice Speed: <input type="range" id="voiceSpeed" min="0.5" max="2" step="0.1" value="1">
+                    <span id="speedValue">1.0x</span>
+                </label>
+            </div>
+        </main>
+
+        <footer>
+            <p>💡 Tip: Speak clearly in English. Your speech will be transcribed and translated automatically.</p>
+             <p>💡 Tip: Habla claro en español. Tu discurso será transcrito y traducido automáticamente.</p>
+             <p >   <a href="https://portfolio-fabian-gonzalez-nbypof8u3.vercel.app/" target="_blank" rel="noopener">Desarrollado por Fabian Ceferino Gonzalez 2025 ®️</a> </p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
