@@ -22,6 +22,9 @@ app.use((req, res, next) => {
 
 // Servir archivos estáticos
 app.use(express.static(path.join(__dirname, 'public')));
+// También servir los mismos assets cuando la app está montada bajo el prefijo /fabiantalkenglish
+// (ej. https://<host>/fabiantalkenglish/styles.css)
+app.use('/fabiantalkenglish', express.static(path.join(__dirname, 'public')));
 
 // Función para manejar chat con IA
 async function handleChat(req, res) {

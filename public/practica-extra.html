@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FabianTalkEnglish - Práctica extra</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="practice-page">
+    <div class="container practice-shell">
+        <header>
+            <h1>📚 Práctica extra</h1>
+            <p class="subtitle">Actividades interactivas para aprender inglés con vocabulario, frases y escritura guiada</p>
+            <nav class="top-nav" aria-label="Navegación principal">
+                <a class="nav-link" href="index.html">Conversación</a>
+                <a class="nav-link active" href="practica-extra.html">Práctica extra</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="practice-hero">
+                <article class="hero-card">
+                    <div class="hero-badge">English practice hub</div>
+                    <h2>Convierte cada actividad en una mini lección interactiva.</h2>
+                    <p>
+                        Repasa frases útiles, escucha pronunciación, ordena palabras y escribe tu propia respuesta.
+                        La idea es practicar de forma corta, clara y repetible desde móvil o escritorio.
+                    </p>
+                    <div class="hero-actions">
+                        <a class="nav-link active" href="#flashcard-section">Empezar ahora</a>
+                        <a class="ghost-link" href="index.html">Volver a conversación</a>
+                    </div>
+                    <div class="lesson-toolbar">
+                        <label for="lessonSelect">Elegir lección</label>
+                        <select id="lessonSelect" class="lesson-select"></select>
+                        <p id="lessonSummary" class="helper-line">Selecciona una lección para cargar sus actividades.</p>
+                    </div>
+                </article>
+
+                <aside class="stats-card" aria-live="polite">
+                    <div class="stat">
+                        <span>Progreso general</span>
+                        <strong id="progressLabel">0%</strong>
+                        <div class="progress-bar" aria-hidden="true"><span id="progressBar"></span></div>
+                    </div>
+                    <div class="stat">
+                        <span>Puntos</span>
+                        <strong id="scoreLabel">0</strong>
+                    </div>
+                    <div class="stat">
+                        <span>Racha</span>
+                        <strong id="streakLabel">0</strong>
+                    </div>
+                </aside>
+            </section>
+
+            <section class="activity-grid">
+                <article class="practice-card" id="flashcard-section">
+                        <h3 id="flashcardTitle">1. Flashcard de frases</h3>
+                    <p>Escucha la frase y luego revela la traducción para fijar significado y pronunciación.</p>
+                    <div class="phrase-block">
+                        <div class="english" id="flashcardEnglish"></div>
+                        <div class="spanish" id="flashcardSpanish"></div>
+                        <div class="helper-line" id="flashcardHint"></div>
+                    </div>
+                    <div class="action-row">
+                        <button class="small-btn primary" id="speakFlashcard" type="button">Escuchar</button>
+                        <button class="small-btn" id="revealFlashcard" type="button">Mostrar traducción</button>
+                        <button class="small-btn" id="nextFlashcard" type="button">Siguiente frase</button>
+                    </div>
+                    <div class="feedback-box flashcard-feedback" id="flashcardFeedback">Escucha la frase, mira la traducción y lee la nota de uso.</div>
+                </article>
+
+                <article class="practice-card">
+                    <h3 id="quizTitle">2. Quiz rápido</h3>
+                    <p>Selecciona la opción correcta para completar la expresión en inglés.</p>
+                    <div class="phrase-block">
+                        <div class="english" id="quizQuestion"></div>
+                        <div class="helper-line" id="quizPrompt"></div>
+                        <div class="option-list" id="quizOptions"></div>
+                    </div>
+                    <div class="feedback-box" id="quizFeedback">Responde para ver la explicación.</div>
+                    <div class="quiz-actions">
+                        <button class="small-btn" id="nextQuizBtn" type="button" aria-label="Siguiente pregunta">Siguiente pregunta</button>
+                    </div>
+                </article>
+
+                <article class="builder-card">
+                        <h3 id="builderTitle">3. Ordena la frase</h3>
+                    <p>Toca las palabras para construir la oración correcta y comprobarla al final.</p>
+                    <div class="phrase-block">
+                        <div class="builder-output">
+                            <span class="label">Tu frase</span>
+                            <div id="builderOutput">Toca una palabra para comenzar.</div>
+                        </div>
+                        <div class="word-bank" id="wordBank"></div>
+                    </div>
+                    <div class="builder-actions">
+                        <button class="small-btn primary" id="checkSentence" type="button">Comprobar</button>
+                        <button class="small-btn" id="clearSentence" type="button">Limpiar</button>
+                        <button class="small-btn" id="nextMatchBtn" type="button" aria-label="Siguiente emparejamiento">Siguiente emparejamiento</button>
+                    </div>
+                    <div class="feedback-box" id="builderFeedback">Ordena las palabras para formar una frase natural.</div>
+                </article>
+            </section>
+
+            <section class="prompt-card">
+                <h3 id="promptTitle">4. Respuesta libre</h3>
+                <p>Escribe una respuesta corta en inglés. Luego compara tu idea con una respuesta modelo.</p>
+                <div class="phrase-block">
+                    <div class="english" id="promptEnglish"></div>
+                    <div class="spanish" id="promptSpanish"></div>
+                    <div class="helper-line" id="promptHint"></div>
+                </div>
+                <textarea class="text-area" id="studentAnswer" placeholder="Write your answer in English..."></textarea>
+                <div class="action-row">
+                    <button class="small-btn primary" id="checkAnswer" type="button">Revisar respuesta</button>
+                    <button class="small-btn" id="showModelAnswer" type="button">Ver modelo</button>
+                    <button class="small-btn" id="nextPrompt" type="button">Nuevo tema</button>
+                </div>
+                <div class="feedback-box" id="answerFeedback">Escribe una respuesta libre y compárala con el modelo.</div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Practica corto, repite seguido y vuelve a la conversación cuando quieras.</p>
+            <p><a href="index.html">Ir al modo conversación</a></p>
+        </footer>
+    </div>
+
+    <script src="practica-extra.js"></script>
+</body>
+</html>
