@@ -830,7 +830,7 @@ document.addEventListener('DOMContentLoaded', () => {
         panel.style.borderRadius = '10px';
         panel.style.zIndex = '9999';
         panel.style.boxShadow = '0 4px 12px rgba(0,0,0,0.45)';
-        panel.innerHTML = `
+       /* panel.innerHTML = `
             <div style="display:flex; align-items:center; justify-content:space-between; gap:8px;">
                 <div style="font-weight:700;">Debug</div>
                 <div style="display:flex; gap:6px; align-items:center;">
@@ -849,6 +849,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 <button id="dbgClear" style="background:#a00;color:#fff;border:none;padding:6px 8px;border-radius:6px;font-size:12px;">Clear</button>
             </div>
         `;
+        */
+       
         document.body.appendChild(panel);
 
         const dbgToggleBtn = document.getElementById('dbgToggle');
