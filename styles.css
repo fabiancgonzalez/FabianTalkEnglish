@@ -329,20 +329,20 @@ footer {
     .translations-container {
         grid-template-columns: 1fr;
     }
-    
+
     header h1 {
         font-size: 2rem;
     }
-    
+
     .controls {
         flex-direction: column;
     }
-    
+
     .btn {
         width: 100%;
         justify-content: center;
     }
-    
+
     .status {
         flex-direction: column;
         text-align: center;

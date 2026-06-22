@@ -15,7 +15,11 @@ const getBasePath = () => {
     }
     return '';
 };
-const API_BASE_URL = getBasePath();
+// Allow an explicit override when hosting the static site on a provider
+// that doesn't run the Node backend (e.g., WNPower). Set `window.__API_BASE__`
+// in the page to point to an external API host (no trailing slash).
+const DEFAULT_API_BASE = getBasePath();
+const API_BASE_URL = (window.__API_BASE__ && String(window.__API_BASE__).replace(/\/$/, '')) || DEFAULT_API_BASE;
 
 // Helper: fetch con timeout
 function fetchWithTimeout(url, options = {}, timeout = 10000) {
@@ -59,6 +63,8 @@ function initSpeechRecognition() {
         console.log('Speech recognition started');
         starting = false;
         isListening = true;
+        
+    recognition.continuous = true;
         updateStatus('Listening...', 'listening');
         startBtn.disabled = true;
         stopBtn.disabled = false;
