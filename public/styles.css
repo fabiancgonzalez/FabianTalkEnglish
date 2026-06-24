@@ -486,17 +486,78 @@ footer {
     gap: 4px;
 }
 
-.thanks-card a {
-    display: inline-block;
-    font-size: 0.9rem;
+.contact-list {
+    gap: 8px;
+}
+
+.contact-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    border-radius: 12px;
     color: #1e3a8a;
     text-decoration: none;
     word-break: break-word;
+    background: #f8fbff;
+    border: 1px solid #dbeafe;
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-link:hover,
+.contact-link:focus-visible {
+    text-decoration: none;
+    transform: translateY(-1px);
+    background: #eff6ff;
+    border-color: #bfdbfe;
+    box-shadow: 0 6px 16px rgba(30, 64, 175, 0.12);
+}
+
+.contact-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+    border-radius: 999px;
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.contact-icon svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.contact-link--whatsapp .contact-icon {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.contact-link--email .contact-icon {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.contact-link--instagram .contact-icon {
+    background: linear-gradient(135deg, #fdf2f8 0%, #ede9fe 100%);
+    color: #c026d3;
+}
+
+.contact-text {
+    font-size: 0.9rem;
+    line-height: 1.25;
 }
 
 .thanks-card a:hover,
 .thanks-card a:focus-visible {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .practice-hero {
