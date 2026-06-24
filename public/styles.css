@@ -413,6 +413,53 @@ footer {
     z-index: 1;
 }
 
+.thanks-card {
+    position: fixed;
+    top: 86px;
+    right: 18px;
+    width: min(320px, calc(100vw - 36px));
+    background: rgba(255, 255, 255, 0.96);
+    color: #0f172a;
+    border: 1px solid #dbeafe;
+    border-radius: 14px;
+    padding: 14px 14px 12px;
+    box-shadow: 0 16px 36px rgba(15, 23, 42, 0.18);
+    z-index: 1100;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+}
+
+.thanks-card h2 {
+    font-size: 0.98rem;
+    margin-bottom: 6px;
+    color: #1d4ed8;
+}
+
+.thanks-card p {
+    font-size: 0.88rem;
+    line-height: 1.35;
+    margin-bottom: 8px;
+}
+
+.thanks-card ul {
+    list-style: none;
+    display: grid;
+    gap: 6px;
+}
+
+.thanks-card a {
+    display: inline-block;
+    font-size: 0.86rem;
+    color: #1e3a8a;
+    text-decoration: none;
+    word-break: break-word;
+}
+
+.thanks-card a:hover,
+.thanks-card a:focus-visible {
+    text-decoration: underline;
+}
+
 .practice-hero {
     display: grid;
     grid-template-columns: 1.3fr 0.7fr;
@@ -727,6 +774,13 @@ footer {
     .builder-actions .small-btn,
     .action-row .small-btn {
         width: 100%;
+    }
+
+    .thanks-card {
+        position: static;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto 12px;
     }
 }
 
