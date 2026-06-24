@@ -298,6 +298,8 @@ const flashcardTitle = document.getElementById('flashcardTitle');
 const quizTitle = document.getElementById('quizTitle');
 const builderTitle = document.getElementById('builderTitle');
 const promptTitle = document.getElementById('promptTitle');
+const thanksCard = document.getElementById('thanksCard');
+const thanksToggle = document.getElementById('thanksToggle');
 
 let currentLessonIndex = 0;
 let currentFlashcardIndex = 0;
@@ -768,6 +770,16 @@ function advanceLesson() {
     setLesson(nextIndex);
 }
 
+function toggleThanksCard() {
+    if (!thanksCard || !thanksToggle) {
+        return;
+    }
+    const collapsed = thanksCard.classList.toggle('is-collapsed');
+    document.body.classList.toggle('thanks-collapsed', collapsed);
+    thanksToggle.textContent = collapsed ? 'Abrir' : 'Cerrar';
+    thanksToggle.setAttribute('aria-expanded', String(!collapsed));
+}
+
 speakFlashcardBtn.addEventListener('click', () => {
     speakText(getLesson().flashcards[currentFlashcardIndex].audio);
 });
@@ -792,6 +804,10 @@ nextPromptBtn.addEventListener('click', () => {
 lessonSelect.addEventListener('change', (event) => {
     setLesson(Number(event.target.value));
 });
+
+if (thanksToggle) {
+    thanksToggle.addEventListener('click', toggleThanksCard);
+}
 
 window.addEventListener('DOMContentLoaded', () => {
     populateLessonSelect();

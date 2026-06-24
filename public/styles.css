@@ -15,7 +15,7 @@ body {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1320px;
     width: 100%;
     height: 90vh;
     background: white;
@@ -415,41 +415,80 @@ footer {
 
 .thanks-card {
     position: fixed;
-    top: 86px;
-    right: 18px;
-    width: min(320px, calc(100vw - 36px));
+    top: 62px;
+    right: 28px;
+    width: min(390px, calc(100vw - 36px));
     background: rgba(255, 255, 255, 0.96);
     color: #0f172a;
     border: 1px solid #dbeafe;
     border-radius: 14px;
-    padding: 14px 14px 12px;
+    padding: 10px 12px;
     box-shadow: 0 16px 36px rgba(15, 23, 42, 0.18);
     z-index: 1100;
     -webkit-backdrop-filter: blur(6px);
     backdrop-filter: blur(6px);
+    transition: width 0.2s ease, padding 0.2s ease, box-shadow 0.2s ease;
+}
+
+.thanks-toggle {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    border: 1px solid #cbd5e1;
+    border-radius: 999px;
+    background: #eff6ff;
+    color: #1e3a8a;
+    font-size: 0.72rem;
+    font-weight: 700;
+    line-height: 1;
+    padding: 6px 10px;
+    cursor: pointer;
+}
+
+.thanks-toggle:hover,
+.thanks-toggle:focus-visible {
+    background: #dbeafe;
+}
+
+.thanks-card.is-collapsed {
+    width: 92px;
+    padding: 10px 8px;
+    box-shadow: 0 10px 20px rgba(15, 23, 42, 0.14);
+}
+
+.thanks-card.is-collapsed h2,
+.thanks-card.is-collapsed p,
+.thanks-card.is-collapsed ul {
+    display: none;
+}
+
+.thanks-card.is-collapsed .thanks-toggle {
+    position: static;
+    width: 100%;
+    padding: 8px 6px;
 }
 
 .thanks-card h2 {
-    font-size: 0.98rem;
-    margin-bottom: 6px;
+    font-size: 0.9rem;
+    margin-bottom: 4px;
     color: #1d4ed8;
 }
 
 .thanks-card p {
-    font-size: 0.88rem;
-    line-height: 1.35;
-    margin-bottom: 8px;
+    font-size: 0.9rem;
+    line-height: 1.28;
+    margin-bottom: 6px;
 }
 
 .thanks-card ul {
     list-style: none;
     display: grid;
-    gap: 6px;
+    gap: 4px;
 }
 
 .thanks-card a {
     display: inline-block;
-    font-size: 0.86rem;
+    font-size: 0.9rem;
     color: #1e3a8a;
     text-decoration: none;
     word-break: break-word;
@@ -462,10 +501,15 @@ footer {
 
 .practice-hero {
     display: grid;
-    grid-template-columns: 1.3fr 0.7fr;
-    gap: 16px;
+    grid-template-columns: minmax(0, 1.45fr) minmax(250px, 0.55fr);
+    gap: 12px;
     align-items: stretch;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
+    margin-right: clamp(0px, 22vw, 320px);
+}
+
+.practice-page.thanks-collapsed .practice-hero {
+    margin-right: clamp(0px, 8vw, 120px);
 }
 
 .hero-card,
@@ -479,33 +523,33 @@ footer {
 }
 
 .hero-card {
-    padding: 16px;
+    padding: 12px;
     background: linear-gradient(135deg, #0f172a 0%, #1d4ed8 100%);
     color: white;
 }
 
 .hero-card h2 {
-    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    font-size: clamp(1.25rem, 2.4vw, 1.85rem);
     line-height: 1.05;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
 .hero-card p {
     max-width: 55ch;
     color: rgba(255, 255, 255, 0.9);
-    font-size: 0.95rem;
+    font-size: 0.9rem;
 }
 
 .hero-actions {
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
-    margin-top: 22px;
+    margin-top: 12px;
 }
 
 .lesson-toolbar {
-    margin-top: 18px;
-    padding: 16px;
+    margin-top: 12px;
+    padding: 12px;
     border-radius: 16px;
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.14);
@@ -532,11 +576,11 @@ footer {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 8px 14px;
+    padding: 6px 12px;
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.12);
-    font-size: 0.92rem;
-    margin-bottom: 14px;
+    font-size: 0.84rem;
+    margin-bottom: 10px;
 }
 
 .ghost-link {
@@ -547,21 +591,21 @@ footer {
 }
 
 .stats-card {
-    padding: 24px;
+    padding: 14px;
     display: grid;
-    gap: 14px;
+    gap: 10px;
     background: linear-gradient(180deg, #fff, #f8fafc);
 }
 
 .stat {
-    padding: 16px;
+    padding: 12px;
     border-radius: 14px;
     background: #eff6ff;
 }
 
 .stat strong {
     display: block;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     color: #1d4ed8;
 }
 
@@ -764,6 +808,10 @@ footer {
         grid-template-columns: 1fr;
     }
 
+    .practice-hero {
+        margin-right: 0;
+    }
+
     .hero-actions,
     .builder-actions,
     .action-row {
@@ -781,6 +829,23 @@ footer {
         width: 100%;
         max-width: 1200px;
         margin: 0 auto 12px;
+    }
+
+    .thanks-card.is-collapsed {
+        width: 100%;
+    }
+
+    .thanks-card.is-collapsed h2,
+    .thanks-card.is-collapsed p,
+    .thanks-card.is-collapsed ul {
+        display: block;
+    }
+
+    .thanks-card.is-collapsed .thanks-toggle {
+        position: absolute;
+        width: auto;
+        right: 8px;
+        top: 8px;
     }
 }
 
