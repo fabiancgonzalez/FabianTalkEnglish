@@ -7,7 +7,8 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    height: 100vh;
+    min-height: 100vh;
+    min-height: 100dvh;
     padding: 20px;
     display: flex;
     align-items: center;
@@ -17,7 +18,7 @@ body {
 .container {
     max-width: 1320px;
     width: 100%;
-    height: 90vh;
+    height: min(90vh, calc(100dvh - 40px));
     background: white;
     border-radius: 20px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
@@ -378,7 +379,21 @@ footer {
 
 .practice-page {
     position: relative;
-    overflow: hidden;
+    display: block;
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+}
+
+.practice-page .container {
+    margin: 0 auto;
+    height: auto;
+    min-height: calc(100dvh - 40px);
+}
+
+.practice-page main {
+    overflow: visible;
 }
 
 .practice-page::before,
@@ -694,6 +709,15 @@ footer {
     margin-bottom: 24px;
 }
 
+.practice-hero > *,
+.activity-grid > * {
+    min-width: 0;
+}
+
+.quiz-actions .small-btn {
+    width: 100%;
+}
+
 .practice-card,
 .builder-card,
 .prompt-card {
@@ -809,6 +833,13 @@ footer {
     margin-top: 14px;
 }
 
+.quiz-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+}
+
 .small-btn {
     background: #e2e8f0;
     color: #0f172a;
@@ -835,33 +866,185 @@ footer {
     margin-top: 16px;
 }
 
+@media (max-width: 1024px) {
+    .practice-hero,
+    .practice-page.thanks-collapsed .practice-hero {
+        margin-right: 0;
+    }
+
+    .thanks-card {
+        width: min(340px, calc(100vw - 24px));
+        right: 12px;
+    }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
+    .practice-page main {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .practice-page .practice-hero {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 0;
+    }
+
+    .practice-page .hero-card {
+        order: 1;
+    }
+
+    .practice-page .stats-card {
+        order: 2;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .practice-page .activity-grid {
+        order: 3;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 0;
+    }
+
+    .practice-page .prompt-card {
+        order: 4;
+    }
+
+    .practice-page .activity-grid > .practice-card,
+    .practice-page .activity-grid > .builder-card,
+    .practice-page .prompt-card {
+        width: 100%;
+    }
+
+    .practice-page .activity-grid > .practice-card:first-child {
+        order: 1;
+    }
+
+    .practice-page .activity-grid > .practice-card:nth-child(2) {
+        order: 2;
+    }
+
+    .practice-page .activity-grid > .builder-card {
+        order: 3;
+    }
+
+    .phrase-block .english,
+    .phrase-block .spanish,
+    #quizQuestion,
+    #promptEnglish,
+    #promptSpanish,
+    #builderOutput {
+        overflow-wrap: anywhere;
+        word-break: break-word;
+    }
+
+    body {
+        padding: 10px;
+        align-items: stretch;
+    }
+
+    .container {
+        height: auto;
+        min-height: calc(100dvh - 20px);
+        border-radius: 14px;
+    }
+
+    header {
+        padding: 14px 12px 12px;
+    }
+
+    main {
+        padding: 16px;
+    }
+
     .subtitles-container,
     .translations-container {
         grid-template-columns: 1fr;
+        gap: 12px;
+        margin-bottom: 18px;
+    }
+
+    .subtitle-box {
+        padding: 14px;
+        min-height: 120px;
+    }
+
+    .subtitle-text {
+        font-size: 1.05rem;
+        line-height: 1.45;
     }
 
     header h1 {
-        font-size: 2rem;
+        font-size: 1.7rem;
     }
 
     .controls {
         flex-direction: column;
+        gap: 10px;
     }
 
     .btn {
         width: 100%;
         justify-content: center;
+        padding: 13px 16px;
+        min-height: 46px;
+    }
+
+    .small-btn,
+    .option-btn,
+    .word-btn,
+    .top-nav .nav-link,
+    .thanks-toggle {
+        min-height: 44px;
+    }
+
+    .small-btn,
+    .option-btn,
+    .word-btn {
+        padding: 12px 14px;
+        font-size: 0.96rem;
     }
 
     .status {
         flex-direction: column;
         text-align: center;
+        gap: 10px;
+        padding: 12px;
+    }
+
+    .conversation-history {
+        max-height: 34vh;
+        padding: 14px;
+        margin-bottom: 20px;
+    }
+
+    .voice-settings {
+        padding: 12px;
+        gap: 12px;
+        justify-content: flex-start;
+    }
+
+    .voice-settings label {
+        width: 100%;
     }
 
     .top-nav {
+        display: flex;
+        width: 100%;
         gap: 8px;
+    }
+
+    .top-nav .nav-link {
+        flex: 1;
+        min-width: 0;
+        padding: 8px 10px;
+        font-size: 0.88rem;
     }
 
     .practice-hero,
@@ -869,44 +1052,244 @@ footer {
         grid-template-columns: 1fr;
     }
 
+    .activity-grid {
+        gap: 12px;
+        margin-bottom: 18px;
+    }
+
     .practice-hero {
         margin-right: 0;
+        gap: 10px;
+    }
+
+    .hero-card,
+    .stats-card,
+    .practice-card,
+    .builder-card,
+    .prompt-card {
+        border-radius: 14px;
+    }
+
+    .hero-card,
+    .stats-card,
+    .practice-card,
+    .builder-card,
+    .prompt-card {
+        padding: 14px;
+    }
+
+    .lesson-toolbar {
+        padding: 10px;
+    }
+
+    .lesson-select {
+        max-width: none;
+    }
+
+    .stat {
+        padding: 10px;
+    }
+
+    .stat strong {
+        font-size: 1.05rem;
+    }
+
+    .phrase-block {
+        padding: 12px;
+        min-height: 100px;
+    }
+
+    .phrase-block .english {
+        font-size: 1.05rem;
+    }
+
+    .word-bank {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .word-bank .word-btn {
+        flex: 1 1 calc(50% - 8px);
+        text-align: center;
     }
 
     .hero-actions,
     .builder-actions,
-    .action-row {
+    .action-row,
+    .quiz-actions {
         flex-direction: column;
     }
 
     .hero-actions .nav-link,
     .builder-actions .small-btn,
-    .action-row .small-btn {
+    .action-row .small-btn,
+    .quiz-actions .small-btn {
         width: 100%;
     }
 
+    .controls,
+    .hero-actions,
+    .builder-actions,
+    .action-row,
+    .quiz-actions {
+        gap: 12px;
+    }
+
+    .voice-settings input[type="range"] {
+        width: 140px;
+        height: 30px;
+    }
+
     .thanks-card {
-        position: static;
+        position: sticky;
+        top: 8px;
         width: 100%;
-        max-width: 1200px;
-        margin: 0 auto 12px;
+        max-width: none;
+        margin: 0 0 12px;
+        max-height: 42vh;
+        overflow: auto;
     }
 
     .thanks-card.is-collapsed {
         width: 100%;
+        max-height: none;
+        overflow: hidden;
+        padding: 8px;
     }
 
     .thanks-card.is-collapsed h2,
     .thanks-card.is-collapsed p,
     .thanks-card.is-collapsed ul {
-        display: block;
+        display: none;
     }
 
     .thanks-card.is-collapsed .thanks-toggle {
-        position: absolute;
-        width: auto;
-        right: 8px;
-        top: 8px;
+        position: static;
+        width: 100%;
+        right: auto;
+        top: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .practice-page main {
+        gap: 12px;
+    }
+
+    .practice-page .stats-card {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .practice-page .stat {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    .practice-page .stat strong {
+        font-size: 1rem;
+    }
+
+    .practice-page .hero-actions {
+        margin-top: 8px;
+    }
+
+    body {
+        padding: 0;
+    }
+
+    .container {
+        min-height: 100dvh;
+        border-radius: 0;
+    }
+
+    header {
+        padding: 12px 10px 10px;
+    }
+
+    header h1 {
+        font-size: 1.45rem;
+        margin-bottom: 4px;
+    }
+
+    header .subtitle {
+        font-size: 0.82rem;
+    }
+
+    main {
+        padding: 12px;
+    }
+
+    .subtitle-box h3,
+    .conversation-history h3 {
+        font-size: 1rem;
+    }
+
+    .hero-card h2 {
+        font-size: 1.2rem;
+        line-height: 1.2;
+    }
+
+    .hero-card p,
+    .helper-line,
+    .contact-text {
+        font-size: 0.85rem;
+    }
+
+    .translation-box h4,
+    .language-info,
+    .voice-settings label {
+        font-size: 0.85rem;
+    }
+
+    .btn {
+        font-size: 0.95rem;
+        gap: 8px;
+        min-height: 48px;
+    }
+
+    .small-btn,
+    .option-btn,
+    .word-btn,
+    .top-nav .nav-link,
+    .thanks-toggle {
+        min-height: 46px;
+        font-size: 0.94rem;
+    }
+
+    .small-btn,
+    .option-btn,
+    .word-btn {
+        padding: 12px;
+    }
+
+    .status,
+    .voice-settings,
+    .subtitle-box,
+    .translation-box,
+    .phrase-block,
+    .feedback-box {
+        border-radius: 12px;
+    }
+
+    .conversation-history {
+        max-height: 32vh;
+    }
+
+    .word-bank .word-btn {
+        flex: 1 1 100%;
+    }
+
+    .thanks-card {
+        margin-bottom: 10px;
+    }
+
+    footer {
+        padding: 14px 12px;
+        font-size: 0.85rem;
     }
 }
 

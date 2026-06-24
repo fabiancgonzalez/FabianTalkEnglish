@@ -780,6 +780,25 @@ function toggleThanksCard() {
     thanksToggle.setAttribute('aria-expanded', String(!collapsed));
 }
 
+function setThanksCardCollapsed(collapsed) {
+    if (!thanksCard || !thanksToggle) {
+        return;
+    }
+    thanksCard.classList.toggle('is-collapsed', collapsed);
+    document.body.classList.toggle('thanks-collapsed', collapsed);
+    thanksToggle.textContent = collapsed ? 'Abrir' : 'Cerrar';
+    thanksToggle.setAttribute('aria-expanded', String(!collapsed));
+}
+
+function applyMobileThanksLayout() {
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    if (isMobile) {
+        setThanksCardCollapsed(true);
+        return;
+    }
+    setThanksCardCollapsed(false);
+}
+
 speakFlashcardBtn.addEventListener('click', () => {
     speakText(getLesson().flashcards[currentFlashcardIndex].audio);
 });
@@ -812,6 +831,7 @@ if (thanksToggle) {
 window.addEventListener('DOMContentLoaded', () => {
     populateLessonSelect();
     initLessonState();
+    applyMobileThanksLayout();
     checkSentenceBtn.textContent = 'Comprobar';
     clearSentenceBtn.textContent = 'Limpiar';
     nextQuizBtn.textContent = 'Siguiente pregunta';
@@ -819,3 +839,5 @@ window.addEventListener('DOMContentLoaded', () => {
     updateProgress();
     renderLesson();
 });
+
+window.addEventListener('resize', applyMobileThanksLayout);
